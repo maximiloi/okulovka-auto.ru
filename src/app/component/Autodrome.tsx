@@ -24,6 +24,7 @@ function Autodrome() {
           width={960}
           height={640}
           alt="Собственный автодром для обучения вождению"
+          className="rounded-sm shadow"
         />
       </div>
     </section>

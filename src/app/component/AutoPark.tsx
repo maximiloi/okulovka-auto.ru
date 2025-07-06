@@ -23,12 +23,14 @@ function AutoPark() {
             width={1024}
             height={682}
             alt="Автомобиль из автопарка"
+            className="rounded-sm shadow"
           />
           <Image
             src="/car2.jpg"
             width={1024}
             height={682}
             alt="Автомобиль из автопарка"
+            className="rounded-sm shadow"
           />
         </div>
       </div>

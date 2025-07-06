@@ -10,7 +10,7 @@ import {
 
 function Nav() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden lg:block">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink href="/">

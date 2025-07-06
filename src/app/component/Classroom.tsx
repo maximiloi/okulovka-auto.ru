@@ -69,6 +69,7 @@ function Classroom() {
                 width={1024}
                 height={687}
                 priority={index === 0}
+                className="rounded-sm shadow"
               />
             </CarouselItem>
           ))}
