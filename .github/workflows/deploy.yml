@@ -13,6 +13,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VDS_HOST }} >> ~/.ssh/known_hosts
+
       - name: Copy project files to server
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -22,7 +27,6 @@ jobs:
           source: '.'
           target: '/var/www/site'
           strip_components: 1
-          host_fingerprint: "ignore"
 
       - name: SSH into server and build + reload PM2
         uses: appleboy/ssh-action@v1.0.3
