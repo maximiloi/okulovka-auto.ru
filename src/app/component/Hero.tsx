@@ -27,7 +27,7 @@ function Hero() {
           проходит под руководством опытных инструкторов, в комфортной и
           доброжелательной атмосфере.
         </p>
-        <p>Почему выбирают нас:---</p>
+        <p>Почему выбирают нас:</p>
         <ul>
           <li className="align-center flex gap-4">
             <Car className="text-primary h-6 w-6" />
@@ -39,8 +39,8 @@ function Hero() {
           </li>
           <li className="align-center flex gap-4">
             <Car className="text-primary h-6 w-6" />
-            Высокий процент успешной сдачи — мы готовим не "на отвали", а по
-            делу.
+            Высокий процент успешной сдачи — мы готовим не &quot;на
+            отвали&quot;, а по делу.
           </li>
           <li className="align-center flex gap-4">
             <Car className="text-primary h-6 w-6" />
