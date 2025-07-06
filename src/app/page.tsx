@@ -1,12 +1,14 @@
-import Header from './component/Header';
+import Autodrome from "./component/Autodrome";
+import AutoPark from "./component/AutoPark";
+import Header from "./component/Header";
 
 export default function Home() {
   return (
     <>
       <Header />
       <main>
-        <h1>Welcome to the Auto School</h1>
-        <p>Learn to drive with us!</p>
+        <AutoPark />
+        <Autodrome />
       </main>
     </>
   );
