@@ -1,6 +1,6 @@
 import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
-import NavPage from "./NavPage";
+import Nav from "./Nav";
 
 function Header() {
   return (
@@ -11,7 +11,7 @@ function Header() {
           <h1 className="w-full text-center text-2xl font-bold text-gray-800 sm:w-2/3">
             Автошкола ООО «Компания АВТО ОНЛАЙН»
           </h1>
-          <NavPage />
+          <Nav />
         </div>
         <div className="mt-8 flex w-full flex-col items-center gap-2 sm:mt-0 sm:w-1/3">
           <a

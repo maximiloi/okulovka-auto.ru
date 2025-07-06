@@ -8,7 +8,7 @@ import {
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
 
-function NavPage() {
+function Nav() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -115,4 +115,4 @@ function NavPage() {
   );
 }
 
-export default NavPage;
+export default Nav;
