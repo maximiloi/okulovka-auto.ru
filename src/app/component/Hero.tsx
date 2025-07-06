@@ -28,26 +28,26 @@ function Hero() {
           доброжелательной атмосфере.
         </p>
         <p>Почему выбирают нас:</p>
-        <ul>
+        <ul className="grid gap-2">
           <li className="align-center flex gap-4">
-            <Car className="text-primary h-6 w-6" />
+            <Car className="text-primary h-6 w-6 shrink-0" />
             Подготовка к экзамену в ГИБДД — от теории до практики.
           </li>
           <li className="align-center flex gap-4">
-            <Car className="text-primary h-6 w-6" />
+            <Car className="text-primary h-6 w-6 shrink-0" />
             Собственный автодром — не зависим от сторонних площадок.
           </li>
           <li className="align-center flex gap-4">
-            <Car className="text-primary h-6 w-6" />
+            <Car className="text-primary h-6 w-6 shrink-0" />
             Высокий процент успешной сдачи — мы готовим не &quot;на
             отвали&quot;, а по делу.
           </li>
           <li className="align-center flex gap-4">
-            <Car className="text-primary h-6 w-6" />
+            <Car className="text-primary h-6 w-6 shrink-0" />
             Возможна рассрочка — учиться может каждый.
           </li>
           <li className="align-center flex gap-4">
-            <Car className="text-primary h-6 w-6" />
+            <Car className="text-primary h-6 w-6 shrink-0" />
             Официальные документы для налогового вычета — вернём часть стоимости
             обучения.
           </li>
