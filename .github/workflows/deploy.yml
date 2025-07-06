@@ -19,9 +19,12 @@ jobs:
           host: ${{ secrets.VDS_HOST }}
           username: ${{ secrets.VDS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: '.' # копирует весь проект
+          source: '.'
           target: '/var/www/site'
-          strip_components: 1 # удаляет корневую папку
+          strip_components: 1
+          rm: true
+          timeout: 120s
+          host_fingerprint: "ignore"          
 
       - name: SSH into server and build + reload PM2
         uses: appleboy/ssh-action@v1.0.3
