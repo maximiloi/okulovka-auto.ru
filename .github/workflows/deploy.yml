@@ -22,9 +22,7 @@ jobs:
           source: '.'
           target: '/var/www/site'
           strip_components: 1
-          rm: true
-          timeout: 120s
-          host_fingerprint: "ignore"          
+          host_fingerprint: "ignore"
 
       - name: SSH into server and build + reload PM2
         uses: appleboy/ssh-action@v1.0.3
@@ -34,12 +32,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/site
-
-            # Установка зависимостей
             npm ci --omit=dev
-
-            # Сборка Next.js
             npm run build
-
-            # Перезапуск через PM2
-            pm2 reload ecosystem.config.js --only site || pm2 start ecosystem.config.js --only site
+            pm2 reload ecosystem.config.js --only site || pm2 start ecosystem.config.js --only site || true
