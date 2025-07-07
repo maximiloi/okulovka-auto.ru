@@ -105,7 +105,7 @@ function Nav() {
                 <NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {item.children.map((child, i) => (
+                    {item.children?.map((child, i) => (
                       <NavigationMenuLink key={i} href={child.href || "#"}>
                         {child.label}
                       </NavigationMenuLink>
