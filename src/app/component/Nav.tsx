@@ -18,43 +18,46 @@ const menuItems = [
     children: [
       { label: "Лицензия", href: "/document/license" },
       { label: "Устав", href: "/document/statute" },
-      { label: "Договор" },
+      { label: "Образец договора", href: "/document/sample-contract" },
       { label: "Образец свидетельства", href: "/document/sample-certificate" },
       { label: "Учебная программа", href: "/document/training-program" },
       { label: "Режим занятий", href: "/document/class-schedule" },
-      { label: "Финансово-хозяйственная деятельность", href: "/document#" },
-      { label: "Отчет по результатам самообследования", href: "/document#" },
-      {
-        label:
-          "Отчет по результатам самообследования образовательной аудитории",
-        href: "/document#",
-      },
-      { label: "Положение об аттестационной комиссии", href: "/document#" },
-      {
-        label: "Положение об образовательном подразделении",
-        href: "/document#",
-      },
-      {
-        label: "Положение об оказании платных образовательных услуг",
-        href: "/document#",
-      },
+      // { label: "Финансово-хозяйственная деятельность", href: "/document#" },
+      // { label: "Отчет по результатам самообследования", href: "/document#" },
+      // {
+      //   label:
+      //     "Отчет по результатам самообследования образовательной аудитории",
+      //   href: "/document#",
+      // },
+      // { label: "Положение об аттестационной комиссии", href: "/document#" },
+      // {
+      //   label: "Положение об образовательном подразделении",
+      //   href: "/document#",
+      // },
+      // {
+      //   label: "Положение об оказании платных образовательных услуг",
+      //   href: "/document#",
+      // },
       {
         label: "Договор аренды нежилых помещений",
         href: "/document/contract-lease-non-residential-premises",
       },
       {
         label: "Заключение о соответствии учебно-материальной базы",
-        href: "/document#",
+        href: "/document/conclusion-conformity-umb",
       },
       {
         label: "Акт санитарно-эпидемиологического обследования",
-        href: "/document#",
+        href: "/document/act-sanitary-epidemiologic-examination",
       },
       {
         label: "Экспертное заключение санитарно-эпидемиологической экспертизы",
-        href: "/document#",
+        href: "/document/expert-conclusion-sanitary-epidemiologic-examination",
       },
-      { label: "Санитарно-эпидемиологическое заключение", href: "/document#" },
+      {
+        label: "Санитарно-эпидемиологическое заключение",
+        href: "/document/sanitary-epidemiologic-conclusion",
+      },
     ],
   },
   {
