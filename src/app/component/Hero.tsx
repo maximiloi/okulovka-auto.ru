@@ -3,8 +3,8 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <section className="container mx-auto px-4 py-8 md:grid md:grid-cols-3 md:gap-8">
-      <div className="flex flex-col gap-4 md:col-span-2">
+    <section className="container mx-auto grid gap-8 px-4 py-8 md:grid-cols-3 md:gap-8">
+      <div className="flex flex-col gap-8 md:col-span-2">
         <h2 className="text-3xl font-bold">
           Автошкола АВТО ОНЛАЙН — ваш путь к уверенному вождению!
         </h2>
