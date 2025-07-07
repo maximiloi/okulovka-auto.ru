@@ -62,10 +62,7 @@ const menuItems = [
   },
   {
     label: "Цены",
-    children: [
-      { label: "Цены", href: "/#" },
-      { label: "План обучения", href: "/#" },
-    ],
+    href: "/price",
   },
   {
     label: "Вождение",
@@ -109,7 +106,7 @@ function Nav() {
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     {item.children?.map((child, i) => (
-                      <NavigationMenuLink key={i} href={child.href || "#"}>
+                      <NavigationMenuLink key={i} href={child.href}>
                         {child.label}
                       </NavigationMenuLink>
                     ))}
@@ -117,7 +114,7 @@ function Nav() {
                 </NavigationMenuContent>
               </>
             ) : (
-              <NavigationMenuLink href={item.href || "#"}>
+              <NavigationMenuLink href={item.href}>
                 {item.label}
               </NavigationMenuLink>
             )}
