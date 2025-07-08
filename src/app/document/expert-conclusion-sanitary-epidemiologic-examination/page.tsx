@@ -1,10 +1,13 @@
-"use client";
+import { Metadata } from "next";
 
-import dynamic from "next/dynamic";
+import PdfViewerClient from "@/lib/pdf-viewer-client";
 
-const PdfViewer = dynamic(() => import("../../component/ui/pdf-viewer"), {
-  ssr: false,
-});
+export const metadata: Metadata = {
+  title:
+    "Экспертное заключение санитарно-эпидемиологической экспертизы | Автошкола | ООО «Компания АВТО ОНЛАЙН»",
+  description:
+    "Экспертное заключение санитарно-эпидемиологической экспертизы автошколы ООО «Компания АВТО ОНЛАЙН».",
+};
 
 function Page() {
   return (
@@ -12,8 +15,7 @@ function Page() {
       <h2 className="text-3xl font-bold">
         Экспертное заключение санитарно-эпидемиологической экспертизы
       </h2>
-
-      <PdfViewer src="/docs/expert-conclusion-sanitary-epidemiologic-examination.pdf" />
+      <PdfViewerClient src="/docs/expert-conclusion-sanitary-epidemiologic-examination.pdf" />
     </section>
   );
 }

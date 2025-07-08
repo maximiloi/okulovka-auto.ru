@@ -1,10 +1,13 @@
-"use client";
+import { Metadata } from "next";
 
-import dynamic from "next/dynamic";
+import PdfViewerClient from "@/lib/pdf-viewer-client";
 
-const PdfViewer = dynamic(() => import("../../component/ui/pdf-viewer"), {
-  ssr: false,
-});
+export const metadata: Metadata = {
+  title:
+    "Заключение о соответствии учебно-материальной базы | Автошкола | ООО «Компания АВТО ОНЛАЙН»",
+  description:
+    "Заключение о соответствии учебно-материальной базы автошколы ООО «Компания АВТО ОНЛАЙН» установленным требованиям.",
+};
 
 function Page() {
   return (
@@ -12,8 +15,7 @@ function Page() {
       <h2 className="text-3xl font-bold">
         Заключение о соответствии учебно-материальной базы
       </h2>
-
-      <PdfViewer src="/docs/conclusion-conformity-umb.pdf" />
+      <PdfViewerClient src="/docs/conclusion-conformity-umb.pdf" />
     </section>
   );
 }

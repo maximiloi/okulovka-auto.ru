@@ -1,10 +1,12 @@
-"use client";
+import { Metadata } from "next";
 
-import dynamic from "next/dynamic";
+import PdfViewerClient from "@/lib/pdf-viewer-client";
 
-const PdfViewer = dynamic(() => import("../../component/ui/pdf-viewer"), {
-  ssr: false,
-});
+export const metadata: Metadata = {
+  title: "Лицензия | Автошкола | ООО «Компания АВТО ОНЛАЙН»",
+  description:
+    "Лицензия автошколы ООО «Компания АВТО ОНЛАЙН» — официальный документ, подтверждающий право на образовательную деятельность.",
+};
 
 function Page() {
   return (
@@ -15,12 +17,12 @@ function Page() {
         Новгородской области от 29 сентября 2014 г. выдано заключение о
         соответствии установленным требованием.
       </p>
-      <PdfViewer src="/docs/license.pdf" />
+      <PdfViewerClient src="/docs/license.pdf" />
 
       <p className="lg:w-1/2">
         Выписка из реестра лицензий по состоянию на 15 июня 2022 г.
       </p>
-      <PdfViewer src="/docs/extract-from-license-register.pdf" />
+      <PdfViewerClient src="/docs/extract-from-license-register.pdf" />
     </section>
   );
 }

@@ -1,10 +1,12 @@
-"use client";
+import PdfViewerClient from "@/lib/pdf-viewer-client";
+import { Metadata } from "next";
 
-import dynamic from "next/dynamic";
-
-const PdfViewer = dynamic(() => import("../../component/ui/pdf-viewer"), {
-  ssr: false,
-});
+export const metadata: Metadata = {
+  title:
+    "Акт санитарно-эпидемиологического обследования | Автошкола | ООО «Компания АВТО ОНЛАЙН»",
+  description:
+    "Акт санитарно-эпидемиологического обследования автошколы ООО «Компания АВТО ОНЛАЙН» — официальный документ.",
+};
 
 function Page() {
   return (
@@ -13,7 +15,7 @@ function Page() {
         Акт санитарно-эпидемиологического обследования
       </h2>
 
-      <PdfViewer src="/docs/act-sanitary-epidemiologic-examination.pdf" />
+      <PdfViewerClient src="/docs/act-sanitary-epidemiologic-examination.pdf" />
     </section>
   );
 }
