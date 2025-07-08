@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
@@ -15,6 +16,7 @@ export default function PdfViewer({ src }: PDFViewerComponentProps) {
   const [numPages, setNumPages] = useState<number | null>(null);
   const [pageWidth, setPageWidth] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
@@ -26,13 +28,9 @@ export default function PdfViewer({ src }: PDFViewerComponentProps) {
       if (container) {
         const containerWidth = container.offsetWidth;
 
-        // Подбираем количество колонок из Tailwind классов
-        let columns = 1;
-        if (window.innerWidth >= 1024) {
-          columns = 3; // lg:grid-cols-3
-        } else if (window.innerWidth >= 768) {
-          columns = 2; // md:grid-cols-2
-        }
+        // Если адрес содержит "document", используем 3 колонки, иначе 1
+        const isDocumentPath = pathname.includes("document");
+        const columns = isDocumentPath ? 3 : 1;
 
         const gap = 8;
         const totalGap = gap * (columns - 1);
@@ -45,14 +43,20 @@ export default function PdfViewer({ src }: PDFViewerComponentProps) {
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
-  }, []);
+  }, [pathname]);
+
+  const isDocumentPath = pathname.includes("document");
+
+  const gridClass = isDocumentPath
+    ? "grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+    : "grid gap-4 grid-cols-1";
 
   return (
     <div ref={containerRef}>
       <Document
         file={src}
         onLoadSuccess={onDocumentLoadSuccess}
-        className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+        className={gridClass}
       >
         {numPages &&
           Array.from(new Array(numPages), (_, index) => (
