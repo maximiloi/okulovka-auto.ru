@@ -1,4 +1,4 @@
-name: Deploy to VDS
+name: Build GitHub and Deploy to VDS (Sprintbox)
 
 on:
   push:
@@ -6,29 +6,48 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
+
+      - name: Archive production files
+        run: |
+          mkdir deploy
+          cp -r .next deploy/
+          cp -r public deploy/
+          cp -r node_modules deploy/
+          cp -r package.json deploy/
+          cp -r ecosystem.config.js deploy/
 
       - name: Add server to known_hosts
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.VDS_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Copy project files to server
+      - name: Upload build to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VDS_HOST }}
           username: ${{ secrets.VDS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: '.'
+          source: 'deploy/*'
           target: '/var/www/site'
           strip_components: 1
 
-      - name: SSH into server and build + reload PM2
+      - name: Restart PM2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VDS_HOST }}
@@ -36,6 +55,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/site
-            npm ci --omit=dev
-            npm run build
             pm2 reload ecosystem.config.js --only site || pm2 start ecosystem.config.js --only site || true
