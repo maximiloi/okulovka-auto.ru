@@ -22,8 +22,8 @@ const classroomImages = [
 
 function Classroom() {
   return (
-    <section className="container mx-auto px-4 py-8">
-      <h2 className="mb-4 text-3xl font-bold">
+    <section className="container mx-auto grid gap-8 px-4 py-8">
+      <h2 className="text-3xl font-bold">
         Аудитория по теоретической подготовке
       </h2>
       <div className="grid gap-8 lg:grid-cols-2">
@@ -53,7 +53,6 @@ function Classroom() {
         </p>
       </div>
       <Carousel
-        className="mt-8"
         plugins={[
           Autoplay({
             delay: 2000,
