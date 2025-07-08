@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -123,3 +124,13 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* .prose h2 {
+  @apply text-3xl font-bold;
+}
+.prose p {
+  @apply text-xl;
+}
+.prose ul {
+  @apply list-disc pl-6;
+} */
