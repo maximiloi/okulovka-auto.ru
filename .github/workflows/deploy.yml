@@ -28,6 +28,7 @@ jobs:
           mkdir deploy
           cp -r .next deploy/
           cp -r public deploy/
+          cp -r content deploy/
           cp -r node_modules deploy/
           cp -r package.json deploy/
           cp -r ecosystem.config.js deploy/
