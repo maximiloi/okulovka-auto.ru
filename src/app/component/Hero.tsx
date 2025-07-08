@@ -61,7 +61,7 @@ function Hero() {
         </p>
       </div>
       <Image
-        src="/driver-hero.jpg"
+        src="/driver-hero-new.jpg"
         className="hidden rounded-sm shadow md:block"
         width={400}
         height={600}
