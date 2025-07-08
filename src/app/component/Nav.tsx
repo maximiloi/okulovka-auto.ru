@@ -67,11 +67,11 @@ const menuItems = [
   {
     label: "Вождение",
     children: [
-      { label: "График вождения", href: "/#" },
-      { label: "План обучения вождению транспортного средства", href: "/#" },
-      { label: "Учебные маршруты", href: "/#" },
-      { label: "Закрытая площадка", href: "/#" },
-      { label: "Упражнения", href: "/#" },
+      { label: "График вождения", href: "/driving/schedule" },
+      // { label: "План обучения вождению транспортного средства", href: "/#" },
+      { label: "Учебные маршруты", href: "/driving/study-routes" },
+      { label: "Закрытая площадка", href: "/driving/autodrome" },
+      // { label: "Упражнения", href: "/#" },
     ],
   },
   {
