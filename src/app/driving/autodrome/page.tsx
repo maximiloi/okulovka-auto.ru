@@ -26,6 +26,7 @@ function Classroom() {
           width={640}
           height={589}
           priority
+          className="rounded-sm shadow"
         />
         <div className="grid gap-8">
           <p>
