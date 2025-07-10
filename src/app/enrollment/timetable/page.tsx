@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import Timetable from "@/markdown/timetable.mdx";
 
 export const metadata: Metadata = {
-  title: "Расписание занятий автошколы",
+  title:
+    "Расписание занятий автошколы | Автошкола | ООО «Компания АВТО ОНЛАЙН»",
   description:
     "Актуальное расписание занятий по теоретической и практической подготовке водителей категории «В». Индивидуальные графики вождения, удобные группы по выходным.",
   keywords: [
