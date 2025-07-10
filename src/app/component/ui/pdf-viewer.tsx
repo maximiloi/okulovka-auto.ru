@@ -25,19 +25,24 @@ export default function PdfViewer({ src }: PDFViewerComponentProps) {
   useEffect(() => {
     function updateWidth() {
       const container = containerRef.current;
-      if (container) {
-        const containerWidth = container.offsetWidth;
+      if (!container) return;
 
-        // Если адрес содержит "document", используем 3 колонки, иначе 1
-        const isDocumentPath = pathname.includes("document");
-        const columns = isDocumentPath ? 3 : 1;
+      const containerWidth = container.offsetWidth;
+      const isDocumentPath = pathname.includes("document");
 
-        const gap = 8;
-        const totalGap = gap * (columns - 1);
-        const columnWidth = (containerWidth - totalGap) / columns;
+      let columns = 1;
+      const screenWidth = window.innerWidth;
 
-        setPageWidth(columnWidth);
+      // На маленьких экранах — всегда 1 колонка
+      if (screenWidth >= 1024 && isDocumentPath) {
+        columns = 3;
       }
+
+      const gap = 8;
+      const totalGap = gap * (columns - 1);
+      const columnWidth = (containerWidth - totalGap) / columns;
+
+      setPageWidth(columnWidth);
     }
 
     updateWidth();
@@ -48,7 +53,7 @@ export default function PdfViewer({ src }: PDFViewerComponentProps) {
   const isDocumentPath = pathname.includes("document");
 
   const gridClass = isDocumentPath
-    ? "grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+    ? "grid gap-4 grid-cols-1 lg:grid-cols-3"
     : "grid gap-4 grid-cols-1";
 
   return (
@@ -59,7 +64,7 @@ export default function PdfViewer({ src }: PDFViewerComponentProps) {
         className={gridClass}
       >
         {numPages &&
-          Array.from(new Array(numPages), (_, index) => (
+          Array.from({ length: numPages }, (_, index) => (
             <Page
               key={`page_${index + 1}`}
               pageNumber={index + 1}
