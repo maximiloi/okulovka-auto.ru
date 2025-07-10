@@ -20,7 +20,7 @@ function Page() {
   return (
     <section className="container mx-auto grid gap-4 px-4 py-8">
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="prose prose-lg max-w-full min-w-[600px]">
+        <div className="prose prose-lg max-w-full">
           <Director />
         </div>
         <figure>
