@@ -6,9 +6,9 @@ function Header() {
   return (
     <header>
       <hr className="mb-4 border-4 border-gray-700" />
-      <div className="container mx-auto items-center justify-between sm:flex">
-        <div className="flex w-full flex-col items-center gap-2 sm:w-1/2 lg:w-2/3">
-          <h1 className="w-full text-center text-2xl font-bold text-gray-800">
+      <div className="container mx-auto px-4 sm:flex">
+        <div className="flex w-full items-center gap-4 sm:w-1/2 md:flex-col lg:w-2/3">
+          <h1 className="hidden w-full text-center text-2xl font-bold text-gray-800 lg:block">
             Автошкола ООО&nbsp;«Компания АВТО&nbsp;ОНЛАЙН»
           </h1>
           <Nav />
