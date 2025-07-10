@@ -4,6 +4,9 @@ import createMDX from "@next/mdx";
 const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   allowedDevOrigins: ["10.0.1.9", "localhost"],
+  images: {
+    domains: ["static-maps.yandex.ru"],
+  },
 };
 
 const withMDX = createMDX({
