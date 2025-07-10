@@ -5,12 +5,21 @@ import Image from "next/image";
 import AutodromeCarousel from "@/app/component/AutodromeCarousel";
 
 export const metadata: Metadata = {
-  title: "Автодром для обучения вождению | Автошкола Окуловка",
+  title:
+    "Автодром в Окуловке — упражнения и подготовка | ООО «Компания АВТО ОНЛАЙН»",
   description:
-    "Собственный автодром автошколы ООО «Компания АВТО ОНЛАЙН» в г. Окуловка, ул. Береговая, д. 38. Схема площадки, список экзаменационных упражнений и фотогалерея. Практические занятия и подготовка к экзамену категории B.",
+    "Собственный автодром автошколы в г. Окуловка. Подготовка к экзамену ГИБДД: горка, змейка, гараж, разворот, параллельная парковка и другие упражнения.",
+  keywords: [
+    "автодром Окуловка",
+    "автошкола автодром",
+    "категория B упражнения",
+    "экзамен на автодроме",
+    "вождение на автодроме",
+    "практика на автодроме",
+  ],
 };
 
-function Classroom() {
+export default function Page() {
   return (
     <section className="container mx-auto grid gap-8 px-4 py-8">
       <h2 className="text-3xl font-bold">Закрытая площадка</h2>
@@ -26,6 +35,7 @@ function Classroom() {
           width={640}
           height={589}
           priority
+          className="rounded-sm shadow"
         />
         <div className="grid gap-8">
           <p>
@@ -94,5 +104,3 @@ function Classroom() {
     </section>
   );
 }
-
-export default Classroom;

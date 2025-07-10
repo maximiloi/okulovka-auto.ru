@@ -19,6 +19,8 @@ export default function Page() {
         alt="учебная аудитория"
         width={640}
         height={429}
+        className="rounded-sm shadow"
+        priority
       />
     </section>
   );

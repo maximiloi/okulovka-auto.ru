@@ -1,4 +1,12 @@
-import { House } from "lucide-react";
+import { Menu } from "lucide-react";
+import { MENU, MenuItem } from "./MENU";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
+import { Button } from "./ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -7,122 +15,142 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
 
-const menuItems = [
-  {
-    label: <House className="h-6 w-6" />,
-    href: "/",
-  },
-  {
-    label: "Документы",
-    children: [
-      { label: "Лицензия", href: "/document/license" },
-      { label: "Устав", href: "/document/statute" },
-      { label: "Образец договора", href: "/document/sample-contract" },
-      { label: "Образец свидетельства", href: "/document/sample-certificate" },
-      { label: "Учебная программа", href: "/document/training-program" },
-      { label: "Режим занятий", href: "/document/class-schedule" },
-      // { label: "Финансово-хозяйственная деятельность", href: "/document#" },
-      // { label: "Отчет по результатам самообследования", href: "/document#" },
-      // {
-      //   label:
-      //     "Отчет по результатам самообследования образовательной аудитории",
-      //   href: "/document#",
-      // },
-      // { label: "Положение об аттестационной комиссии", href: "/document#" },
-      // {
-      //   label: "Положение об образовательном подразделении",
-      //   href: "/document#",
-      // },
-      // {
-      //   label: "Положение об оказании платных образовательных услуг",
-      //   href: "/document#",
-      // },
-      {
-        label: "Договор аренды нежилых помещений",
-        href: "/document/contract-lease-non-residential-premises",
-      },
-      {
-        label: "Заключение о соответствии учебно-материальной базы",
-        href: "/document/conclusion-conformity-umb",
-      },
-      {
-        label: "Акт санитарно-эпидемиологического обследования",
-        href: "/document/act-sanitary-epidemiologic-examination",
-      },
-      {
-        label: "Экспертное заключение санитарно-эпидемиологической экспертизы",
-        href: "/document/expert-conclusion-sanitary-epidemiologic-examination",
-      },
-      {
-        label: "Санитарно-эпидемиологическое заключение",
-        href: "/document/sanitary-epidemiologic-conclusion",
-      },
-    ],
-  },
-  {
-    label: "Цены",
-    href: "/price",
-  },
-  {
-    label: "Вождение",
-    children: [
-      { label: "График вождения", href: "/driving/schedule" },
-      // { label: "План обучения вождению транспортного средства", href: "/#" },
-      { label: "Учебные маршруты", href: "/driving/study-routes" },
-      { label: "Закрытая площадка", href: "/driving/autodrome" },
-      // { label: "Упражнения", href: "/#" },
-    ],
-  },
-  {
-    label: "Набор в группы",
-    children: [
-      { label: "Набор в группы", href: "/#" },
-      { label: "Расписание занятий", href: "/#" },
-    ],
-  },
-  {
-    label: "О нас",
-    children: [
-      { label: "О нас", href: "/#" },
-      { label: "Как нас найти", href: "/#" },
-      { label: "Структура и органы управления", href: "/#" },
-      { label: "Преподавательский состав", href: "/#" },
-      { label: "Руководитель", href: "/#" },
-      { label: "Вопросы и ответы", href: "/#" },
-    ],
-  },
-];
-
-function Nav() {
-  return (
-    <NavigationMenu className="hidden lg:block">
-      <NavigationMenuList>
-        {menuItems.map((item, idx) => (
-          <NavigationMenuItem key={idx}>
-            {"children" in item ? (
-              <>
-                <NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {item.children?.map((child, i) => (
-                      <NavigationMenuLink key={i} href={child.href}>
-                        {child.label}
-                      </NavigationMenuLink>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </>
-            ) : (
-              <NavigationMenuLink href={item.href}>
-                {item.label}
-              </NavigationMenuLink>
-            )}
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
+interface Navbar1Props {
+  MENU?: MenuItem[];
 }
+
+const Nav = ({}: Navbar1Props) => {
+  return (
+    <div className="w-full">
+      <div className="container">
+        {/* Desktop Menu */}
+        <nav className="hidden justify-center lg:flex">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {MENU.map((item) => renderMenuItem(item))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+          </div>
+        </nav>
+
+        {/* Mobile Menu */}
+        <div className="block lg:hidden">
+          <div className="flex items-center justify-center gap-4">
+            {/* Header Text */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="size-4" />
+                </Button>
+              </SheetTrigger>
+              <a href={"/"} className="text-center text-2xl font-bold">
+                Автошкола ООО&nbsp;&quot;КАО&quot;
+              </a>
+              <SheetContent className="overflow-y-auto">
+                <SheetHeader>
+                  <SheetTitle>
+                    <a href={"/"} className="flex items-center gap-2">
+                      Автошкола ООО &quot;КАО&quot;
+                    </a>
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-6 p-4">
+                  <Accordion
+                    type="single"
+                    collapsible
+                    className="flex w-full flex-col gap-4"
+                  >
+                    {MENU.map((item) => renderMobileMenuItem(item))}
+                  </Accordion>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const renderMenuItem = (item: MenuItem) => {
+  if (item.items) {
+    return (
+      <NavigationMenuItem key={item.title}>
+        <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+        <NavigationMenuContent className="bg-popover text-popover-foreground grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+          {item.items.map((subItem) => (
+            <NavigationMenuLink asChild key={subItem.title}>
+              <SubMenuLink item={subItem} />
+            </NavigationMenuLink>
+          ))}
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    );
+  }
+
+  return (
+    <NavigationMenuItem key={item.title}>
+      <NavigationMenuLink
+        href={item.url}
+        className="group bg-background hover:bg-muted hover:text-accent-foreground text-md inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 font-medium transition-colors"
+      >
+        {item.title}
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  );
+};
+
+const renderMobileMenuItem = (item: MenuItem) => {
+  if (item.items) {
+    return (
+      <AccordionItem key={item.title} value={item.title} className="border-b-0">
+        <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
+          {item.title}
+        </AccordionTrigger>
+        <AccordionContent className="mt-2">
+          {item.items.map((subItem) => (
+            <SubMenuLink key={subItem.title} item={subItem} />
+          ))}
+        </AccordionContent>
+      </AccordionItem>
+    );
+  }
+
+  return (
+    <a key={item.title} href={item.url} className="text-md font-semibold">
+      {item.title}
+    </a>
+  );
+};
+
+const SubMenuLink = ({ item }: { item: MenuItem }) => {
+  return (
+    <a
+      className="hover:bg-muted hover:text-accent-foreground flex flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none"
+      href={item.url}
+    >
+      <div className="text-foreground">{item.icon}</div>
+      <div>
+        <div className="text-sm font-semibold">{item.title}</div>
+        {item.description && (
+          <p className="text-muted-foreground text-sm leading-snug">
+            {item.description}
+          </p>
+        )}
+      </div>
+    </a>
+  );
+};
 
 export default Nav;
