@@ -1,4 +1,5 @@
 import { Menu } from "lucide-react";
+import Link from "next/link";
 import { MENU, MenuItem } from "./MENU";
 import {
   Accordion,
@@ -37,7 +38,7 @@ const Nav = ({}: Navbar1Props) => {
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
-                  {MENU.map((item) => renderMenuItem(item))}
+                  {MENU.map((item, index) => renderMenuItem(item, index))}
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -47,22 +48,21 @@ const Nav = ({}: Navbar1Props) => {
         {/* Mobile Menu */}
         <div className="block lg:hidden">
           <div className="flex items-center justify-center gap-4">
-            {/* Header Text */}
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
-              <a href={"/"} className="text-center text-2xl font-bold">
-                Автошкола ООО&nbsp;&quot;КАО&quot;
-              </a>
+              <Link href="/" className="text-center text-2xl font-bold">
+                Автошкола ООО &quot;КАО&quot;
+              </Link>
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href={"/"} className="flex items-center gap-2">
+                    <Link href="/" className="flex items-center gap-2">
                       Автошкола ООО &quot;КАО&quot;
-                    </a>
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
@@ -71,7 +71,9 @@ const Nav = ({}: Navbar1Props) => {
                     collapsible
                     className="flex w-full flex-col gap-4"
                   >
-                    {MENU.map((item) => renderMobileMenuItem(item))}
+                    {MENU.map((item, index) =>
+                      renderMobileMenuItem(item, index),
+                    )}
                   </Accordion>
                 </div>
               </SheetContent>
@@ -83,14 +85,14 @@ const Nav = ({}: Navbar1Props) => {
   );
 };
 
-const renderMenuItem = (item: MenuItem) => {
+const renderMenuItem = (item: MenuItem, index: number) => {
   if (item.items) {
     return (
-      <NavigationMenuItem key={item.title}>
+      <NavigationMenuItem key={`menu-${index}`}>
         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
         <NavigationMenuContent className="bg-popover text-popover-foreground grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-          {item.items.map((subItem) => (
-            <NavigationMenuLink asChild key={subItem.title}>
+          {item.items.map((subItem, idx) => (
+            <NavigationMenuLink asChild key={`submenu-${index}-${idx}`}>
               <SubMenuLink item={subItem} />
             </NavigationMenuLink>
           ))}
@@ -100,7 +102,7 @@ const renderMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <NavigationMenuItem key={item.title}>
+    <NavigationMenuItem key={`menu-${index}`}>
       <NavigationMenuLink
         href={item.url}
         className="group bg-background hover:bg-muted hover:text-accent-foreground text-md inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 font-medium transition-colors"
@@ -111,16 +113,23 @@ const renderMenuItem = (item: MenuItem) => {
   );
 };
 
-const renderMobileMenuItem = (item: MenuItem) => {
+const renderMobileMenuItem = (item: MenuItem, index: number) => {
   if (item.items) {
     return (
-      <AccordionItem key={item.title} value={item.title} className="border-b-0">
+      <AccordionItem
+        key={`mobile-menu-${index}`}
+        value={`item-${index}`}
+        className="border-b-0"
+      >
         <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
           {item.title}
         </AccordionTrigger>
         <AccordionContent className="mt-2">
-          {item.items.map((subItem) => (
-            <SubMenuLink key={subItem.title} item={subItem} />
+          {item.items.map((subItem, idx) => (
+            <SubMenuLink
+              key={`mobile-submenu-${index}-${idx}`}
+              item={subItem}
+            />
           ))}
         </AccordionContent>
       </AccordionItem>
@@ -128,7 +137,11 @@ const renderMobileMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <a key={item.title} href={item.url} className="text-md font-semibold">
+    <a
+      key={`mobile-menu-${index}`}
+      href={item.url}
+      className="text-md font-semibold"
+    >
       {item.title}
     </a>
   );

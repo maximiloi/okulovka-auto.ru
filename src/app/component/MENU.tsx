@@ -8,7 +8,6 @@ import {
   FileBadge,
   FileText,
   FileWarning,
-  House,
   Landmark,
   LibraryBig,
   MapPinCheck,
@@ -21,7 +20,7 @@ import {
 } from "lucide-react";
 
 export interface MenuItem {
-  title: string | React.ReactNode;
+  title: string;
   url: string;
   description?: string;
   icon?: React.ReactNode;
@@ -30,7 +29,7 @@ export interface MenuItem {
 
 export const MENU = [
   {
-    title: <House className="text-foreground h-6 w-6" />,
+    title: "Главная",
     url: "/",
   },
   {
