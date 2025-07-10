@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Собственный автодром автошколы ООО «Компания АВТО ОНЛАЙН» в г. Окуловка, ул. Береговая, д. 38. Схема площадки, список экзаменационных упражнений и фотогалерея. Практические занятия и подготовка к экзамену категории B.",
 };
 
-function Classroom() {
+export default function Page() {
   return (
     <section className="container mx-auto grid gap-8 px-4 py-8">
       <h2 className="text-3xl font-bold">Закрытая площадка</h2>
@@ -95,5 +95,3 @@ function Classroom() {
     </section>
   );
 }
-
-export default Classroom;
