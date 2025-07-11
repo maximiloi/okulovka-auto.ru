@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "О нас | Автошкола | ООО «Компания АВТО ОНЛАЙН» ",
@@ -14,17 +13,18 @@ export const metadata: Metadata = {
   ],
 };
 
+const yandexMapsApi = process.env.YANDEX_MAPS_API;
+
 function Page() {
   return (
     <section className="container mx-auto grid gap-4 px-4 py-8">
       <h2 className="text-3xl font-bold">Как нас найти</h2>
       <div className="grid gap-4 lg:grid-cols-2">
-        <Image
-          src="https://static-maps.yandex.ru/v1?lang=ru_RU&ll=33.297736,58.376164&z=17&size=550,350&apikey=44f9ce93-066c-4646-8777-b47b573db89d&pt=33.297736,58.376164,comma"
-          width={550}
-          height={350}
+        <img
+          src={`https://static-maps.yandex.ru/v1?lang=ru_RU&ll=33.297736,58.376164&z=17&size=550,350&apikey=${yandexMapsApi}&pt=33.297736,58.376164,comma`}
+          width="550"
+          height="350"
           alt="карта"
-          priority
         />
         <div className="grid gap-2">
           <p>
