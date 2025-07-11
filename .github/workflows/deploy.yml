@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    env:
+        YANDEX_MAPS_API: ${{ secrets.YANDEX_MAPS_API }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
