@@ -75,7 +75,7 @@ export default function CallbackForm() {
         <Button
           type="submit"
           disabled={loading}
-          className="flex cursor-pointer gap-2"
+          className="flex cursor-pointer gap-2 text-lg"
         >
           <Send />
           {loading ? "Отправка..." : "Перезвоните мне"}
