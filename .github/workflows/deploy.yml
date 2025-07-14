@@ -11,7 +11,6 @@ jobs:
         YANDEX_MAPS_API: ${{ secrets.YANDEX_MAPS_API }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
-        
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -51,6 +50,17 @@ jobs:
           source: 'deploy/*'
           target: '/var/www/site'
           strip_components: 1
+          
+      - name: Write .env.local on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VDS_HOST }}
+          username: ${{ secrets.VDS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "YANDEX_MAPS_API=${{ secrets.YANDEX_MAPS_API }}" > /var/www/site/.env.local
+            echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> /var/www/site/.env.local
+            echo "TELEGRAM_ADMIN_CHAT_ID=${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}" >> /var/www/site/.env.local
 
       - name: Restart PM2
         uses: appleboy/ssh-action@v1.0.3
