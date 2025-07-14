@@ -9,6 +9,9 @@ jobs:
   build:
     env:
         YANDEX_MAPS_API: ${{ secrets.YANDEX_MAPS_API }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+        
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
