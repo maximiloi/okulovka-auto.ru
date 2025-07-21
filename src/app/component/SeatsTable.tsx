@@ -59,35 +59,38 @@ export default function SeatsTable() {
   };
 
   return (
-    <div className="w-full overflow-x-auto">
-      <table className="min-w-full rounded-md border border-gray-300 text-left text-sm text-gray-700 shadow-md">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="border px-4 py-2">Номер группы</th>
-            <th className="border px-4 py-2">Начало занятий</th>
-            <th className="border px-4 py-2">Инструктор</th>
-            <th className="border px-4 py-2">Осталось мест</th>
-          </tr>
-        </thead>
-        <tbody>
-          {groups.map((group, index) => (
-            <tr key={index} className="transition-colors hover:bg-gray-50">
-              <td className="border px-4 py-2">{group.groupNumber} гр.</td>
-              <td className="border px-4 py-2">
-                {formatDate(group.startTrainingDate)}
-              </td>
-              <td className="border px-4 py-2">
-                {group.practiceTeachers.length > 0
-                  ? formatShortName(group.practiceTeachers[0])
-                  : "—"}
-              </td>
-              <td className="border px-4 py-2">
-                {CLASS_SIZE - group.studentCount} мест
-              </td>
+    <>
+      <h2 className="text-3xl font-bold">Проходит набор в группы:</h2>
+      <div className="w-full overflow-x-auto">
+        <table className="min-w-full rounded-md border border-gray-300 text-left text-sm text-gray-700 shadow-md">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="border px-4 py-2">Номер группы</th>
+              <th className="border px-4 py-2">Начало занятий</th>
+              <th className="border px-4 py-2">Инструктор</th>
+              <th className="border px-4 py-2">Осталось мест</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {groups.map((group, index) => (
+              <tr key={index} className="transition-colors hover:bg-gray-50">
+                <td className="border px-4 py-2">{group.groupNumber} гр.</td>
+                <td className="border px-4 py-2">
+                  {formatDate(group.startTrainingDate)}
+                </td>
+                <td className="border px-4 py-2">
+                  {group.practiceTeachers.length > 0
+                    ? formatShortName(group.practiceTeachers[0])
+                    : "—"}
+                </td>
+                <td className="border px-4 py-2">
+                  {CLASS_SIZE - group.studentCount} мест
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
