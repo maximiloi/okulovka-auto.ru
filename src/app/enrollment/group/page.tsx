@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
+import SeatsTable from "@/app/component/SeatsTable";
 import EnrollmentEnd from "@/markdown/enrollment-end.mdx";
-import EnrollmentGroup from "@/markdown/enrollment-group.mdx";
 import EnrollmentStart from "@/markdown/enrollment-start.mdx";
 
 export const metadata: Metadata = {
@@ -16,11 +16,7 @@ function Page() {
     <section className="container mx-auto px-4 py-8">
       <div className="prose prose-lg max-w-full">
         <EnrollmentStart />
-        <div className="mt-[-56px] w-full overflow-x-auto">
-          <div className="min-w-[600px]">
-            <EnrollmentGroup />
-          </div>
-        </div>
+        <SeatsTable />
         <EnrollmentEnd />
       </div>
     </section>
