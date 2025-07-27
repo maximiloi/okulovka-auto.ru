@@ -36,7 +36,11 @@ export default function SeatsTable() {
   if (loading) return <p className="text-gray-600">Загрузка данных...</p>;
 
   if (!groups.length)
-    return <p className="text-gray-600">Нет доступных групп.</p>;
+    return (
+      <p className="text-gray-600">
+        Запись в группы на текущий момент не ведётся.
+      </p>
+    );
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -62,7 +66,7 @@ export default function SeatsTable() {
     <>
       <h2 className="text-3xl font-bold">Проходит набор в группы:</h2>
       <div className="w-full overflow-x-auto">
-        <table className="min-w-full rounded-md border border-gray-300 text-left text-sm text-gray-700 shadow-md">
+        <table className="min-w-full rounded-md border border-gray-300 text-left text-sm text-gray-700 shadow-md md:text-lg">
           <thead className="bg-gray-100">
             <tr>
               <th className="border px-4 py-2">Номер группы</th>

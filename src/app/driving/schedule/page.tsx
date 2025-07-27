@@ -17,8 +17,8 @@ function Page() {
         подпишитесь на наш Telegram-бот.
       </p>
 
-      <PdfViewerClient src="/grafic/67595f07-3bb8-4436-b1d9-25b42f4a65b0.pdf" />
-      <PdfViewerClient src="/grafic/0b045898-2167-4b86-8265-9ba6b00ab610.pdf" />
+      <PdfViewerClient src="/grafic/187-955e9971-2589-4825-90e6-9d979d0fb00c.pdf" />
+      <PdfViewerClient src="/grafic/188-a6f75440-08b0-4eab-8b77-5b134bff4887.pdf" />
     </section>
   );
 }
