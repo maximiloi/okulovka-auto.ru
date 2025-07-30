@@ -13,7 +13,6 @@ export default function SeatsTable() {
   const [loading, setLoading] = useState(true);
 
   const companyId = "0f334594-f2d1-43e9-8e1c-26c0470cb5da";
-  const CLASS_SIZE = 12;
 
   useEffect(() => {
     const fetchGroups = async () => {
@@ -87,9 +86,7 @@ export default function SeatsTable() {
                     ? formatShortName(group.practiceTeachers[0])
                     : "—"}
                 </td>
-                <td className="border px-4 py-2">
-                  {CLASS_SIZE - group.studentCount} мест
-                </td>
+                <td className="border px-4 py-2">{group.studentCount} мест</td>
               </tr>
             ))}
           </tbody>
