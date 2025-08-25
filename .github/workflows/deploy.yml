@@ -21,6 +21,14 @@ jobs:
         with:
           node-version: 20
 
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: npm ci
 
@@ -32,14 +40,14 @@ jobs:
           mkdir deploy
           cp -r .next deploy/
           cp -r public deploy/
-          cp -r node_modules deploy/
-          cp -r package.json deploy/
-          cp -r ecosystem.config.js deploy/
+          cp package.json deploy/
+          cp package-lock.json deploy/
+          cp ecosystem.config.js deploy/
 
       - name: Add server to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.VDS_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p 22 -H ${{ secrets.VDS_HOST }} >> ~/.ssh/known_hosts
 
       - name: Upload build to server
         uses: appleboy/scp-action@v0.1.7
@@ -51,16 +59,18 @@ jobs:
           target: '/var/www/site'
           strip_components: 1
           
-      - name: Write .env.local on server
+      - name: Setup environment and install deps on server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VDS_HOST }}
           username: ${{ secrets.VDS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "YANDEX_MAPS_API=${{ secrets.YANDEX_MAPS_API }}" > /var/www/site/.env.local
-            echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> /var/www/site/.env.local
-            echo "TELEGRAM_ADMIN_CHAT_ID=${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}" >> /var/www/site/.env.local
+            cd /var/www/site
+            echo "YANDEX_MAPS_API=${{ secrets.YANDEX_MAPS_API }}" > .env.local
+            echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> .env.local
+            echo "TELEGRAM_ADMIN_CHAT_ID=${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}" >> .env.local
+            npm ci --omit=dev
 
       - name: Restart PM2
         uses: appleboy/ssh-action@v1.0.3
@@ -70,4 +80,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/site
-            pm2 reload ecosystem.config.js --only site || pm2 start ecosystem.config.js --only site || true
+            pm2 startOrReload ecosystem.config.js --only site
