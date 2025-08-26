@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'site',
+      name: 'site-okulovka-auto.ru',
       script: 'npm',
       args: 'start',
       cwd: '/var/www/site',
