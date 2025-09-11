@@ -46,9 +46,18 @@ function Page() {
             alt="Фотография Васильев Олег Николаевич"
             priority
           />
-          <figcaption className="mt-4">
-            <figcaption className="mt-4">Васильев Олег Николаевич</figcaption>
-          </figcaption>
+          <figcaption className="mt-4">Васильев Олег Николаевич</figcaption>
+        </figure>
+        <figure>
+          <Image
+            src="/tech03.jpg"
+            className="rounded-sm shadow"
+            width={420}
+            height={600}
+            alt="Фотография Титов Владимир Александрович"
+            priority
+          />
+          <figcaption className="mt-4">Титов Владимир Александрович</figcaption>
         </figure>
       </div>
     </section>
